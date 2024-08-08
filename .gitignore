@@ -1,24 +1,61 @@
-# Compiled class file
+# IntelliJ IDEA specific files
+.idea/
+*.iml
+*.iws
+out/
+target/
+*.ipr
 *.class
 
-# Log file
+# Maven specific files
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+**/target/
+**/logs/
+**/dependency-reduced-pom.xml
+**/release.properties
+**/buildNumber.properties
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/debug.log
+**/release-pom.xml
+
+# Gradle specific files
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+**/build/
+
+# Logs
+logs/
 *.log
 
-# BlueJ files
-*.ctxt
+# Temporary files
+tmp/
+*.tmp
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# OS generated files
+.DS_Store
+Thumbs.db
 
-# Package Files #
-*.jar
+# Application specific files
 *.war
-*.nar
+*.jar
 *.ear
-*.zip
-*.tar.gz
-*.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Spring Boot specific files
+!spring-boot-loader/src/main/resources/META-INF/spring.factories
+!spring-boot-project/spring-boot-tools/spring-boot-loader/src/main/resources/META-INF/spring.factories
+
+# Local environment specific files
+.env
+.env.local
+.env.*.local
+.env.test.local
+.env.development.local
+.env.staging.local
+.env.production.local
+
+# Java specific files
