@@ -1,5 +1,6 @@
 package com.casa.demospring.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +30,7 @@ public class User implements Serializable {
 
     @OneToMany(mappedBy = "client")
     @Setter(AccessLevel.NONE)
+    @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
     public User(Long id, String name, String email, String phone, String password) {
