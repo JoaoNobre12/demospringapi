@@ -1,8 +1,10 @@
 package com.casa.demospring.demo.config;
 
+import com.casa.demospring.demo.entities.Category;
 import com.casa.demospring.demo.entities.Order;
 import com.casa.demospring.demo.entities.User;
 import com.casa.demospring.demo.entities.enums.OrderStatus;
+import com.casa.demospring.demo.repositories.CategoryRepository;
 import com.casa.demospring.demo.repositories.OrderRepository;
 import com.casa.demospring.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +21,13 @@ public class TestConfig implements CommandLineRunner {
 
     private final UserRepository userRepository;
     private final OrderRepository orderRepository;
+    private final CategoryRepository categoryRepository;
 
     @Autowired
-    TestConfig(UserRepository userRepository, OrderRepository orderRepository) {
+    TestConfig(UserRepository userRepository, OrderRepository orderRepository, CategoryRepository categoryRepository) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
+        this.categoryRepository = categoryRepository;
     }
 
 
@@ -43,5 +47,11 @@ public class TestConfig implements CommandLineRunner {
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), OrderStatus.WAITING_PAYMENT, user3);
 
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        Category cat1 = new Category(null, "Books");
+        Category cat2 = new Category(null, "Electronics");
+
+        categoryRepository.save(cat1);
+        categoryRepository.save(cat2);
     }
 }

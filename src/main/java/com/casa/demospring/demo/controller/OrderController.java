@@ -1,9 +1,7 @@
-package com.casa.demospring.demo.resources;
+package com.casa.demospring.demo.controller;
 
 import com.casa.demospring.demo.entities.Order;
-import com.casa.demospring.demo.entities.User;
 import com.casa.demospring.demo.services.OrderService;
-import com.casa.demospring.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +14,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/orders")
-public class OrderResource {
+public class OrderController {
 
     OrderService orderService;
 
     @Autowired
-    public OrderResource(OrderService orderService) {
+    public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
     @GetMapping

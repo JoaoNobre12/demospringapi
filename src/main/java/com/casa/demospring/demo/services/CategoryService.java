@@ -1,8 +1,7 @@
 package com.casa.demospring.demo.services;
 
-import com.casa.demospring.demo.entities.User;
-import com.casa.demospring.demo.repositories.UserRepository;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+import com.casa.demospring.demo.entities.Category;
+import com.casa.demospring.demo.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +9,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class CategoryService {
 
-    private final UserRepository repository;
+    private final CategoryRepository repository;
 
     @Autowired
-    public UserService(UserRepository repository) {
+    CategoryService(CategoryRepository repository) {
         this.repository = repository;
     }
 
-    public List<User> findAll() {
+    public List<Category> findAll() {
         return repository.findAll();
     }
 
-    public User findById(Long id) {
-        Optional<User> obj = repository.findById(id);
+    public Category findById(Long id) {
+        Optional<Category> obj = repository.findById(id);
         return obj.get();
     }
 //
