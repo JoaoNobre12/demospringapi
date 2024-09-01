@@ -2,7 +2,6 @@ package com.casa.demospring.demo.services;
 
 import com.casa.demospring.demo.entities.User;
 import com.casa.demospring.demo.repositories.UserRepository;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

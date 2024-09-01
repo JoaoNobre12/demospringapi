@@ -27,7 +27,7 @@ public class CategoryService {
         return obj.get();
     }
 //
-//    public User insert(User obj) {
+//    public Category insert(Category obj) {
 //        return repository.save(obj);
 //    }
 //
@@ -41,9 +41,9 @@ public class CategoryService {
 //        }
 //    }
 //
-//    public User update(Long id, User obj) {
+//    public Category update(Long id, Category obj) {
 //        try {
-//            User entity = repository.getReferenceById(id);
+//            Category entity = repository.getReferenceById(id);
 //            updateData(entity, obj);
 //            return repository.save(entity);
 //        } catch (EntityNotFoundException e) {
@@ -51,7 +51,7 @@ public class CategoryService {
 //        }
 //    }
 //
-//    private void updateData(User entity, User obj) {
+//    private void updateData(Category entity, Category obj) {
 //        entity.setName(obj.getName());
 //        entity.setEmail(obj.getEmail());
 //        entity.setPhone(obj.getPhone());

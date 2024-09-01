@@ -1,9 +1,7 @@
 package com.casa.demospring.demo.services;
 
-import com.casa.demospring.demo.entities.Order;
-import com.casa.demospring.demo.entities.Order;
-import com.casa.demospring.demo.repositories.OrderRepository;
-import com.casa.demospring.demo.repositories.OrderRepository;
+import com.casa.demospring.demo.entities.Product;
+import com.casa.demospring.demo.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,25 +9,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OrderService {
+public class ProductService {
 
-    private final OrderRepository repository;
+    private final ProductRepository repository;
 
     @Autowired
-    OrderService(OrderRepository repository) {
+    ProductService(ProductRepository repository) {
         this.repository = repository;
     }
 
-    public List<Order> findAll() {
+    public List<Product> findAll() {
         return repository.findAll();
     }
 
-    public Order findById(Long id) {
-        Optional<Order> obj = repository.findById(id);
+    public Product findById(Long id) {
+        Optional<Product> obj = repository.findById(id);
         return obj.get();
     }
 //
-//    public Order insert(Order obj) {
+//    public Product insert(Product obj) {
 //        return repository.save(obj);
 //    }
 //
@@ -43,9 +41,9 @@ public class OrderService {
 //        }
 //    }
 //
-//    public Order update(Long id, Order obj) {
+//    public Product update(Long id, Product obj) {
 //        try {
-//            Order entity = repository.getReferenceById(id);
+//            Product entity = repository.getReferenceById(id);
 //            updateData(entity, obj);
 //            return repository.save(entity);
 //        } catch (EntityNotFoundException e) {
@@ -53,7 +51,7 @@ public class OrderService {
 //        }
 //    }
 //
-//    private void updateData(Order entity, Order obj) {
+//    private void updateData(Product entity, Product obj) {
 //        entity.setName(obj.getName());
 //        entity.setEmail(obj.getEmail());
 //        entity.setPhone(obj.getPhone());
