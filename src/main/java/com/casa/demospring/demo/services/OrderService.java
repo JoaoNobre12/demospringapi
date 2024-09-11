@@ -1,8 +1,6 @@
 package com.casa.demospring.demo.services;
 
 import com.casa.demospring.demo.entities.Order;
-import com.casa.demospring.demo.entities.Order;
-import com.casa.demospring.demo.repositories.OrderRepository;
 import com.casa.demospring.demo.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

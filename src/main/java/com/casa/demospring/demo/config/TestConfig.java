@@ -1,14 +1,8 @@
 package com.casa.demospring.demo.config;
 
-import com.casa.demospring.demo.entities.Category;
-import com.casa.demospring.demo.entities.Order;
-import com.casa.demospring.demo.entities.Product;
-import com.casa.demospring.demo.entities.User;
+import com.casa.demospring.demo.entities.*;
 import com.casa.demospring.demo.entities.enums.OrderStatus;
-import com.casa.demospring.demo.repositories.CategoryRepository;
-import com.casa.demospring.demo.repositories.OrderRepository;
-import com.casa.demospring.demo.repositories.ProductRepository;
-import com.casa.demospring.demo.repositories.UserRepository;
+import com.casa.demospring.demo.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -25,16 +19,19 @@ public class TestConfig implements CommandLineRunner {
     private final OrderRepository orderRepository;
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
+    private final OrderItemRepository orderItemRepository;
 
     @Autowired
     TestConfig(UserRepository userRepository,
                OrderRepository orderRepository,
                CategoryRepository categoryRepository,
-               ProductRepository productRepository) {
+               ProductRepository productRepository
+    , OrderItemRepository orderItemRepository) {
         this.userRepository = userRepository;
         this.orderRepository = orderRepository;
         this.categoryRepository = categoryRepository;
         this.productRepository = productRepository;
+        this.orderItemRepository = orderItemRepository;
     }
 
 
@@ -73,5 +70,14 @@ public class TestConfig implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
+        OrderItem orderItem = new OrderItem(o1, p1, 2, p1.getPrice());
+        OrderItem orderItem2 = new OrderItem(o1, p3, 1, p3.getPrice());
+        OrderItem orderItem3 = new OrderItem(o2, p3, 2, p3.getPrice());
+
+        orderItem.setOrder(o1);
+        orderItem2.setOrder(o1);
+        orderItem3.setOrder(o2);
+
+        orderItemRepository.saveAll(Arrays.asList(orderItem, orderItem2, orderItem3));
     }
 }
