@@ -1,9 +1,8 @@
 package com.casa.demospring.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -11,6 +10,8 @@ import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "tb_payment")
@@ -27,5 +28,6 @@ public class Payment implements Serializable {
 
     @OneToOne
     @MapsId
+    @JsonIgnore
     private Order order;
 }
