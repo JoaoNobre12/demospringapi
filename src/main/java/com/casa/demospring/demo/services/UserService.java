@@ -34,25 +34,15 @@ public class UserService {
         return repository.save(obj);
     }
 
-//    public void delete(Long id) {
-//        try {
-//            repository.deleteById(id);
-//        } catch (EmptyResultDataAccessException e) {
-//            throw new ResourceNotFoundException(id);
-//        } catch (DataIntegrityViolationException e) {
-//            throw new DatabaseException(e.getMessage());
-//        }
-//    }
-//
-//    public User update(Long id, User obj) {
-//        try {
-//            User entity = repository.getReferenceById(id);
-//            updateData(entity, obj);
-//            return repository.save(entity);
-//        } catch (EntityNotFoundException e) {
-//            throw new ResourceNotFoundException(id);
-//        }
-//    }
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    public User update(Long id, User obj) {
+        User entity = repository.getReferenceById(id);
+        updateData(entity, obj);
+        return repository.save(entity);
+    }
 
     private void updateData(User entity, User obj) {
         entity.setName(obj.getName());
