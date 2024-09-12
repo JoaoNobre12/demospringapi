@@ -2,7 +2,10 @@ package com.casa.demospring.demo.services;
 
 import com.casa.demospring.demo.entities.User;
 import com.casa.demospring.demo.repositories.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,11 +29,11 @@ public class UserService {
         Optional<User> obj = repository.findById(id);
         return obj.get();
     }
-//
-//    public User insert(User obj) {
-//        return repository.save(obj);
-//    }
-//
+
+    public User insert(User obj) {
+        return repository.save(obj);
+    }
+
 //    public void delete(Long id) {
 //        try {
 //            repository.deleteById(id);
@@ -50,10 +53,10 @@ public class UserService {
 //            throw new ResourceNotFoundException(id);
 //        }
 //    }
-//
-//    private void updateData(User entity, User obj) {
-//        entity.setName(obj.getName());
-//        entity.setEmail(obj.getEmail());
-//        entity.setPhone(obj.getPhone());
-//    }
+
+    private void updateData(User entity, User obj) {
+        entity.setName(obj.getName());
+        entity.setEmail(obj.getEmail());
+        entity.setPhone(obj.getPhone());
+    }
 }
