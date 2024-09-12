@@ -1,5 +1,6 @@
 package com.casa.demospring.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,9 @@ public class Product implements Serializable {
     private String description;
     private Double price;
     private String imageUrl;
+    @OneToMany(mappedBy = "id.product")
+    @Getter(AccessLevel.NONE)
+    private Set<OrderItem> items = new HashSet<>();
 
     @Setter(AccessLevel.NONE)
     @ManyToMany
@@ -35,5 +39,14 @@ public class Product implements Serializable {
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
+    }
+
+    @JsonIgnore
+    public Set<Order> getOrders(){
+        Set<Order> set = new HashSet<>();
+        for(OrderItem x : items){
+            set.add(x.getOrder());
+        }
+        return set;
     }
 }
