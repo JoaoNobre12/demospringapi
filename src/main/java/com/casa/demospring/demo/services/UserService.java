@@ -2,6 +2,7 @@ package com.casa.demospring.demo.services;
 
 import com.casa.demospring.demo.entities.User;
 import com.casa.demospring.demo.repositories.UserRepository;
+import com.casa.demospring.demo.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -27,7 +28,7 @@ public class UserService {
 
     public User findById(Long id) {
         Optional<User> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public User insert(User obj) {
