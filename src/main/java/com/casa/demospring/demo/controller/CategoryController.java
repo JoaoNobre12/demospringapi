@@ -1,7 +1,7 @@
-package com.casa.demospring.demo.resources;
+package com.casa.demospring.demo.controller;
 
-import com.casa.demospring.demo.entities.User;
-import com.casa.demospring.demo.services.UserService;
+import com.casa.demospring.demo.entities.Category;
+import com.casa.demospring.demo.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,25 +13,26 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/categories")
+public class CategoryController {
 
-    UserService userService;
+    CategoryService userService;
 
     @Autowired
-    public UserResource(UserService userService) {
+    public CategoryController(CategoryService userService) {
         this.userService = userService;
     }
+
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-        List<User> users = userService.findAll();
+    public ResponseEntity<List<Category>> findAll(){
+        List<Category> users = userService.findAll();
 
         return new ResponseEntity<>(users ,HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
-        User user = userService.findById(id);
+    public ResponseEntity<Category> findById(@PathVariable Long id){
+        Category user = userService.findById(id);
         return new ResponseEntity<>(user,HttpStatus.OK);
     }
 }
