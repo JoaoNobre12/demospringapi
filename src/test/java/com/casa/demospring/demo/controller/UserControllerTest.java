@@ -1,5 +1,6 @@
 package com.casa.demospring.demo.controller;
 
+import com.casa.demospring.demo.entities.User;
 import com.casa.demospring.demo.exceptions.RestCustomException;
 import com.casa.demospring.demo.repositories.UserRepository;
 import com.casa.demospring.demo.services.UserService;
@@ -10,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.util.List;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -33,8 +36,10 @@ class UserControllerTest {
 
     @Test
     void testFindAll() throws Exception {
-        // Configura o mock para lançar a exceção
-        when(userService.findAll()).thenThrow(new RuntimeException("Test Exception"));
+        // Configura o mock para retornar uma lista de usuários
+        List<User> users = List.of(
+                new User(1L, "John Doe", "john@example.com","123456","123456"));
+        when(userService.findAll()).thenReturn(users);
 
         // Configura o MockMvc com o Controller e o ControllerAdvice
         mockMvc = MockMvcBuilders
@@ -42,8 +47,8 @@ class UserControllerTest {
                 .setControllerAdvice(restCustomException)
                 .build();
 
-        // Faz a requisição e verifica se o status code é 418 (I_AM_A_TEAPOT)
+        // Faz a requisição e verifica se o status code é 200 (OK)
         mockMvc.perform(get("/users"))
-                .andExpect(status().isIAmATeapot());
+                .andExpect(status().isOk());
     }
 }
