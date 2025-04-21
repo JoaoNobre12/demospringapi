@@ -1,6 +1,6 @@
 # Demo Spring API
 
-This is a demo project for an API built with Spring Boot.
+This is a demo project for an API built with Spring.
 
 ## Technologies Used
 
